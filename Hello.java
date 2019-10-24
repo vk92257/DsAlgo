@@ -1,8 +1,11 @@
+import java.io.*;
 public class
 {
     public static void main(String[] args)
     {
-      System.out.println("hello github");
+      BufferedReader  br = new BufferedReader(new InputStreamReader(System.in));
+        String s = br.readLine();
+        System.out.println(s);
     }
 }
 
