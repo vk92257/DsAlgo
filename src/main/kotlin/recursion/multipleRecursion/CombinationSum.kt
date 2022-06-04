@@ -31,8 +31,7 @@ fun combinationSum(
      *   1 pic all the integer grater than the target value at the same index
      *   2 if not pic than increase the current index
      *
-    * */
-
+     * */
 
 
     if (currentIndex == inputArray.size) {
@@ -48,7 +47,7 @@ fun combinationSum(
         return
     }
 
-    if (inputArray[currentIndex] <= targetSum ) {
+    if (inputArray[currentIndex] <= targetSum) {
         outPutArray.add(inputArray[currentIndex])
         combinationSum(inputArray, outPutArray, targetSum - inputArray[currentIndex], currentIndex, ansPutArray)
 //        outPutArray.removeAt(outPutArray.size - 1)
