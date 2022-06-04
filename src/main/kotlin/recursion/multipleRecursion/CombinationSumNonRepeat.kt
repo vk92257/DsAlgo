@@ -41,9 +41,6 @@ fun combinationSumNonRepeat(inputArray: ArrayList<Int>, outPutArray: ArrayList<I
        }
        combinationSumNonRepeat(inputArray, outPutArray, currentIndex + 1, target)
    */
-
-
-
     if (target == 0) {
         outPutArray.forEach {
             print(it)
@@ -53,8 +50,14 @@ fun combinationSumNonRepeat(inputArray: ArrayList<Int>, outPutArray: ArrayList<I
         return
     }
 
-
     for (loopIndex in currentIndex until inputArray.size) {
+        /**
+         * .Loop threw the whole elements in the array
+         * .pic the unique element and create the unique index
+         * .don't pic the element if the predecessor and current element is the same or
+         * the target sum is equal to the 0
+         * .check if the sum of the candidate is equal to the target sum
+         * */
 
         if (loopIndex > currentIndex && inputArray[loopIndex] == inputArray[loopIndex - 1]) continue
         if (inputArray[loopIndex] > target) break
