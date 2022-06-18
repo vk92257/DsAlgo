@@ -1,8 +1,8 @@
 package recursion.multipleRecursion
 
 fun main() {
-//    val inputList = arrayListOf<Int>(1, 2, 3, 1000)
-    val inputList = arrayListOf<Int>(1, 2, 3,4, 1000)
+    val inputList = arrayListOf<Int>(1, 2, 3, 1000)
+//    val inputList = arrayListOf<Int>(1, 2, 3,4, 1000)
     val outPutList = arrayListOf<Int>()
     val sumList = arrayListOf<Int>()
     val currentIndex = 0
@@ -24,7 +24,7 @@ fun findPopularitySum(
     if (currentIndex == inputList.size) {
         var sum = 0
         outPutList.forEach {
-            print(it)
+            print("   $it  ")
             sum += it
         }
         sumList.add(sum)
