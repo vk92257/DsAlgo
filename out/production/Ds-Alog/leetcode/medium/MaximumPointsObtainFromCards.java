@@ -33,7 +33,7 @@ class MaximumPointsObtainFromCards {
 
     public static void main(String[] args) {
 
-        int input[] = { 1, 2, 3, 4, 5, 6, 1 };
+        // int input[] = { 1, 2, 3, 4, 5, 6, 1 };
         // int maxMove = 3;
 
         // int input[] = { 2, 2, 2 };
@@ -45,14 +45,11 @@ class MaximumPointsObtainFromCards {
         // int input[] = { 100, 40, 17, 9, 73, 75 }; /* 248 */
         // int maxMove = 3;
 
-        // int input[] = { 1, 79, 80, 1, 1, 1, 200, 1 }; /* 202 */
+        int input[] = { 1, 79, 80, 1, 1, 1, 200, 1 }; /* 202 */
         int maxMove = 3;
 
         System.out.println(maximumPointsObtainFromCards(input, maxMove));
-        System.out.println(input[maxMove++]);
-        System.out.println(maxMove);
-        System.out.println(input[maxMove++]);
-        System.out.println(maxMove);
+
     }
 
     public static int maximumPointsObtainFromCards(int[] cardPoints, int k) {
