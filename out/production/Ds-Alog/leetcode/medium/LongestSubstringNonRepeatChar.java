@@ -39,13 +39,39 @@ class LongestSubstringNonRepeatChar {
     public static void main(String[] args) {
 
         // String s = "abcdefg";
-        // String s = "abcabcbb";
+        String s = "abcabcbb";
         // String s = "bbbbb";
         // String s = "pwwkew";
         // String s = "aab";
-        String s = "dvdf";
+        // String s = "dvdf";
 
-        System.out.println(lengthOfLongestSubstring(s));
+        System.out.println(lengthOfLongestSubstringOptimized(s));
+    }
+
+    public static int lengthOfLongestSubstringOptimized(String s) {
+
+        int length = 0;
+        int startIndex = 0;
+        int currentIndex = 0;
+        ArrayList<Character> map = new ArrayList<Character>();
+
+        while (currentIndex < s.length()) {
+
+            var key = s.charAt(currentIndex);
+            if (map.contains(key)) {
+                map.remove(0);
+                startIndex++;
+            } else {
+                map.add(key);
+                int tempLength = currentIndex - startIndex + 1;
+                if (tempLength > length)
+                    length = tempLength;
+                currentIndex++;
+
+            }
+        }
+
+        return length;
     }
 
     public static int lengthOfLongestSubstring(String s) {
