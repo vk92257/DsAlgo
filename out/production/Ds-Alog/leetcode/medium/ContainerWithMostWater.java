@@ -76,6 +76,7 @@ class ContainerWithMostWater {
             maxWaterArea = Math.max(maxWater, maxWaterArea);
 
             if (height[i] < height[j]) {
+
                 i++;
             } else {
                 j--;
