@@ -36,7 +36,7 @@ public class GroupAnagrams {
      */
 
     public static void main(String[] args) {
-                int strs[] =  new int [] {"eat","tea","tan","ate","nat","bat"}
+        // int strs[] = new int [] {"eat","tea","tan","ate","nat","bat"}
     }
 
     public static void groupAnagrams() {
