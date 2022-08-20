@@ -42,16 +42,53 @@ public class GroupAnagram {
      * 
      */
     public static void main(String[] args) {
-        // String strs[] = { "eat", "tea", "tan", "ate", "nat", "bat" };
-        String strs[] = { "cab", "tin", "pew", "duh", "may", "ill", "buy", "bar",
-                "max", "doc" };
+        String strs[] = { "eat", "tea", "tan", "ate", "nat", "bat" };
+        // String strs[] = { "cab", "tin", "pew", "duh", "may", "ill", "buy", "bar",
+        // "max", "doc" };
         // String strs[] = { "a", "a" };
         // String strs[] = { "ddddddddddg", "dgggggggggg" };
-        var data = groupAnagrams(strs);
+        var data = groupAnagramsOptimized(strs);
         data.forEach((list) -> {
             System.out.println(list);
 
         });
+    }
+
+    public static List<List<String>> groupAnagramsOptimized(String[] strs) {
+
+        Map<HashMap<Character, Integer>, List<String>> opList = new HashMap<>();
+        for (String string : strs) {
+
+            HashMap<Character, Integer> key = getKey(string);
+
+            if (opList.containsKey(key)) {
+                var list = opList.get(key);
+                list.add(string);
+                opList.put(key, list);
+            } else {
+                var list = new ArrayList<String>();
+                list.add(string);
+                opList.put(key, list);
+            }
+
+        }
+
+        List<List<String>> item = new ArrayList<>();
+        opList.forEach((k, v) -> {
+            item.add(v);
+            System.out.println(v);
+        });
+
+        return item;
+    }
+
+    private static HashMap<Character, Integer> getKey(String string) {
+
+        var m = new HashMap<Character, Integer>();
+        for (int i = 0; i < string.length(); i++) {
+            m.put(string.charAt(i), 1);
+        }
+        return m;
     }
 
     public static List<List<String>> groupAnagrams(String[] strs) {
@@ -64,7 +101,7 @@ public class GroupAnagram {
             if (opList.containsKey(key)) {
                 var list = opList.get(key);
                 list.add(string);
-                opList.put(key, list);
+                // opList.put(key, list);
             } else {
                 var list = new ArrayList<String>();
                 list.add(string);
