@@ -86,7 +86,13 @@ public class GroupAnagram {
 
         var m = new HashMap<Character, Integer>();
         for (int i = 0; i < string.length(); i++) {
-            m.put(string.charAt(i), 1);
+
+            if (m.containsKey(string.charAt(i))) {
+                var value = m.get(string.charAt(i));
+                value = value + 1;
+                m.put(string.charAt(i), value);
+            } else
+                m.put(string.charAt(i), 1);
         }
         return m;
     }
