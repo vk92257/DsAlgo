@@ -1,5 +1,8 @@
 package recursion.multipleRecursion
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
 
 data class Tree(val value: Int) {
     var left: Tree? = null
@@ -54,7 +57,30 @@ fun main() {
     traverseTree(root, 0)
 
 
+//    CoroutineScope(Dispatchers.IO).launch {
+//            count()
+//    }
+
+
 }
+
+
+
+
+suspend fun  count(){
+    print("inside the IO ")
+    for(i in 0..5){
+        print(  " printing the value in the loop $i")
+        withContext(Dispatchers.IO){
+            for (j in 0..10){
+                print(j)
+            }
+        }
+    }
+}
+
+
+
 
 
 fun addNode(root: Tree?, value: Int): Tree? {

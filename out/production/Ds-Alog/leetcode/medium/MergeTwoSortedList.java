@@ -44,12 +44,12 @@ public class MergeTwoSortedList {
         // }
 
         ListNode.addNode(head, 2);
+        ListNode.addNode(head, 3);
         ListNode.addNode(head, 4);
-        // ListNode. addNode(head, 3);
 
         ListNode.addNode(head1, 3);
-        ListNode.addNode(head1, 5);
         ListNode.addNode(head1, 4);
+        ListNode.addNode(head1, 5);
 
         System.out.println("Printing the output ");
         ListNode.traverse(mergeTwoLists(head, head1));
@@ -59,55 +59,111 @@ public class MergeTwoSortedList {
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         // ListNode.traverse(list1);
         // ListNode.traverse(list2);
+        ListNode newHead = null;
 
+        ListNode temp = newHead;
         ListNode temp1 = list1;
         ListNode temp2 = list2;
 
-        while (temp1.next != null && temp2.next != null) {
+        while (temp1 != null && temp2 != null) {
             if (temp1.val < temp2.val) {
 
-                System.out.println(temp1.val + "-------" + temp2.val);
-                ListNode one = temp1.next; // 4
-                ListNode two = temp2.next; // 4
-                temp1.next = temp2; // 3
+                if (newHead == null) {
+                    newHead = new ListNode(temp1.val);
+                    temp = newHead;
+                } else {
+                    temp = new ListNode(temp1.val);
+                    temp = temp.next;
+                    temp1 = temp1.next;
+                }
 
-                temp1 = temp1.next;
-                temp1.next = one;
-                temp1 = temp1.next;
-                temp2 = two;
+                // System.out.println(temp1.val + "-------" + temp2.val);
+                // ListNode one = temp1.next; // 4
+                // ListNode two = temp2.next; // 4
+                // temp1.next = temp2; // 3
+
+                // temp1 = temp1.next;
+                // temp1.next = one;
+                // temp1 = temp1.next;
+                // temp2 = two;
 
             } else if (temp1.val == temp2.val) {
-                ListNode one = temp1.next; // 2
-                ListNode two = temp2.next; // 3
 
-                temp1.next = temp2;
-                temp1 = temp1.next;
+                if (newHead == null) {
+                    newHead = new ListNode(temp1.val);
+                    newHead.next = new ListNode(temp2.val);
+                    temp = newHead.next.next;
+                    temp1 = temp1.next;
+                    temp2 = temp2.next;
 
-                temp1.next = one;
-                temp1 = temp1.next.next;
+                } else {
+                    temp = new ListNode(temp1.val);
+                    temp.next = new ListNode(temp2.val);
+                    temp = temp.next.next;
+                    temp1 = temp1.next;
+                    temp2 = temp2.next;
+                }
 
-                temp2 = two;
+                // ListNode one = temp1.next; // 2
+                // ListNode two = temp2.next; // 3
+
+                // temp1.next = temp2;
+                // temp1 = temp1.next;
+
+                // temp1.next = one;
+                // temp1 = temp1.next.next;
+
+                // temp2 = two;
 
             } else {
-                ListNode one = temp1.next; // 4
-                ListNode two = temp2.next; // 3
-                ListNode current = temp1; // 3
 
-                temp1 = temp2; // 2
-                temp1.next = current; // 3
+                if (newHead == null) {
+                    newHead = new ListNode(temp2.val);
+                    temp = newHead;
+                } else {
+                    temp.next = new ListNode(temp2.val);
+                    temp = temp.next;
+                    temp2 = temp2.next;
+                }
 
-                temp1 = temp1.next; // 3
-                temp1.next = one; // 4
+                // ListNode one = temp1.next; // 4
+                // ListNode two = temp2.next; // 3
+                // ListNode current = temp1; // 3
 
-                temp2 = two; // 3
+                // temp1 = temp2; // 2
+                // temp1.next = current; // 3
+
+                // temp1 = temp1.next; // 3
+                // temp1.next = one; // 4
+
+                // temp2 = two; // 3
             }
         }
 
-        if (temp2 != null) {
-            temp1.next = temp2;
+        while (temp1 != null) {
+            newHead = new ListNode(temp1.val);
+            newHead.next = new ListNode(temp2.val);
+            temp = newHead.next.next;
+            temp1 = temp1.next;
+            temp2 = temp2.next;
         }
 
-        return list1;
+        while (temp2 != null) {
+            if (newHead != null) {
+                newHead = new ListNode(temp2.val);
+                temp = newHead;
+            } else {
+                temp = new ListNode(temp2.val);
+                temp = temp.next;
+                temp2 = temp2.next;
+            }
+        }
+
+        // if (temp2 != null) {
+        // temp1.next = temp2;
+        // }
+
+        return newHead;
     }
 
 }
